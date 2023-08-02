@@ -10,6 +10,7 @@ const typeOrmConfig = new DataSource({
   database: process.env.DB_NAME,
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
+  ssl: process.env.DB_SSL === 'true',
   entities: [__dirname + '/src/**/entities/*.entity{.ts,.js}'],
   migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
   migrationsRun: false,
