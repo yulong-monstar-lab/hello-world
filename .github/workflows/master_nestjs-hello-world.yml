@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://webappyulong.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_925d7932a4b145c0aa87f84e142c67e7 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_98808a6852ab43c68dcbb443cd89c612 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_ac5a655afc7b4d38ad981fb9122bd218 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_206dc4b281c0446eba78ad02c3f82e88 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: webappyulong.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_925d7932a4b145c0aa87f84e142c67e7 }}/nestjs-hello-world:${{ github.sha }}
+        tags: webappyulong.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_ac5a655afc7b4d38ad981fb9122bd218 }}/webappyulong/nestjs-hello-world:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'nestjs-hello-world'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d0a9df554ab94b4da6c97261ee6c5dcb }}
-        images: 'webappyulong.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_925d7932a4b145c0aa87f84e142c67e7 }}/nestjs-hello-world:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b3d77fdda1eb47b79c3e7a5c7933554c }}
+        images: 'webappyulong.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_ac5a655afc7b4d38ad981fb9122bd218 }}/webappyulong/nestjs-hello-world:${{ github.sha }}'
