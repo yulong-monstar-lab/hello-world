@@ -43,6 +43,7 @@
     ]
   },
   "dependencies": {
+    "@azure/msal-node": "^2.0.2",
     "@hapi/joi": "^17.1.1",
     "@nestjs/common": "^9.1.1",
     "@nestjs/config": "^2.2.0",
@@ -53,11 +54,15 @@
     "@nestjs/swagger": "^6.1.2",
     "@nestjs/typeorm": "^9.0.1",
     "@types/uuid": "^8.3.4",
+    "azure-ad-jwt-v2": "^2.1.4",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "dotenv": "^16.0.2",
+    "jwks-rsa": "^3.0.1",
     "passport": "^0.6.0",
+    "passport-azure-ad": "^4.3.5",
+    "passport-azure-ad-oauth2": "^0.0.4",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pg": "^8.8.0",
