@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy container app to Azure Web App - nestjs-hello-world
+name: Build and deploy container app to Azure Web App - komatsu-webapp-test
 
 on:
   push:
@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://webappyulong.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_0cc683912797482a9ec4308452ff5a22 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_9038f699869147659ac5c4aebd3993a0 }}
+        registry: https://komatsu.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_1fc9b80234424a1fb35d69abaf4e00a4 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_8fe6958cbba2445bbced1fce3c78d377 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: webappyulong.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0cc683912797482a9ec4308452ff5a22 }}/nestjs-hello-world:${{ github.sha }}
+        tags: komatsu.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1fc9b80234424a1fb35d69abaf4e00a4 }}/hello-world:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -45,7 +45,7 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'nestjs-hello-world'
+        app-name: 'komatsu-webapp-test'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_7cae3f5e9de54a0880c2d0177af43a62 }}
-        images: 'webappyulong.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0cc683912797482a9ec4308452ff5a22 }}/nestjs-hello-world:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2aa20cc3e0b8460896e8a7b5e473277f }}
+        images: 'komatsu.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1fc9b80234424a1fb35d69abaf4e00a4 }}/hello-world:${{ github.sha }}'
