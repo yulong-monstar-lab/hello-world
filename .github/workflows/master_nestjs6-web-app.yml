@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://testaimonstarlab.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_1d8b4eaebeb54ffba7f3f8af7ce99d6a }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_43819dbe6142436a8fe0e3abf236cf9b }}
+        registry: https://komatsu.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_12af0dba12ed4cc2ba67b1a386e912a9 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_738399e5f7434d0aaa4df649f7667685 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: testaimonstarlab.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1d8b4eaebeb54ffba7f3f8af7ce99d6a }}/hello-world:${{ github.sha }}
+        tags: komatsu.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_12af0dba12ed4cc2ba67b1a386e912a9 }}/hello-world:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'nestjs6-web-app'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_dc9a53d6ec764b20bb4ef7640eae07d8 }}
-        images: 'testaimonstarlab.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1d8b4eaebeb54ffba7f3f8af7ce99d6a }}/hello-world:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1b59417755a4442d9c59ce359acf7d17 }}
+        images: 'komatsu.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_12af0dba12ed4cc2ba67b1a386e912a9 }}/hello-world:${{ github.sha }}'
