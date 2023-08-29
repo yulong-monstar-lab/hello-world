@@ -25,12 +25,10 @@ export class MsExtraExternalIdGuard implements CanActivate {
       aad.verify(
         accessToken,
         (options) => {
-          // TODO: Replace hard-coded values with values from ${process.env.variableName}
-          options.Authority =
-            'https://sts.windows.net/dbe439f7-87af-42fa-9326-c61c1ecd465f/discovery/keys';
-          options.Audience = '00000003-0000-0000-c000-000000000000';
-          options.issuer =
-            'https://sts.windows.net/dbe439f7-87af-42fa-9326-c61c1ecd465f/';
+          // Use variables defined in the environment
+          options.Authority = process.env.JWT_AUTHORITY;
+          options.Audience = process.env.JWT_AUDIENCE;
+          options.issuer = process.env.JWT_ISSUER;
         },
         function (err, decodedToken) {
           if (decodedToken) {
